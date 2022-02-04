@@ -1,4 +1,5 @@
 const express = require("express");
+const fetch = require('node-fetch');
 const fs = require("fs");
 const port = 3000;
 const app = express();
@@ -16,21 +17,25 @@ app.get("/", (_req, res) => {
   });
 });
 
-const stars = []
-const names = []
-app.get("/visualise", (_req, res) => {
+app.get("/visualise", async (_req, res) => {
 
-  const str = '' + fs.readFileSync("defaultdata.json")
-  JSON.parse(str)["items"].forEach(function (item, index, arr) {
-    names.push(`'${item["name"]}'`);
-    stars.push(item["stargazers_count"]);
+  const segments = _req.url.split("%2F")  //taken from the user's pasted link
+  const url = `https://api.github.com/repos/${segments[3]}/${segments[4]}/stats/contributors`
+  const response = await dataGet(url)
+
+  const commitCounts = {}
+
+  response.forEach(function (item, index, arr) {
+    commitCounts[`'${item['author']['login']}'`] = item['total']
   })
 
+  //scuffed reconstruction of a new page
   let htmlstring = "" + fs.readFileSync("./chartpt1.txt")
-  htmlstring = htmlstring + `let names = [${names}];\n`
-  htmlstring = htmlstring + `let values = [${stars}];\n`
+  htmlstring = htmlstring + `const names = [${Object.keys(commitCounts)}];\n`
+  htmlstring = htmlstring + `const values = [${Object.values(commitCounts)}];\n`
   htmlstring = htmlstring + fs.readFileSync("./chartpt2.txt")
-  fs.writeFileSync("response.txt", htmlstring)
+
+  fs.writeFileSync("response.txt", htmlstring)  //debugging purposes
 
   res.writeHead(200, { "Content-Type": "text/html" });
   res.write(htmlstring)
@@ -44,3 +49,9 @@ app.listen(port, (error) => {
     console.log("listening on port ", port);
   }
 });
+
+async function dataGet(url) {
+  const response = await fetch(url);
+  const result = await response.json();
+  return result;
+}

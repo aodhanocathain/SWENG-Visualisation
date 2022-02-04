@@ -31,8 +31,6 @@
 
         makeChart()
     </script>
-    <br>
-    <p> hello gaain</p>
 </body>
 
 </html>

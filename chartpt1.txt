@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <p>hello</p>
     <div class="container" style="position:absolute; top:60px; left:10px; width:1000px; height:500px;" >
         <canvas id="myChart">
 
