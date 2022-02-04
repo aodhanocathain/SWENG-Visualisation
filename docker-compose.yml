@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+ node:
+  image: node
+  ports:
+   - "3000:3000"
+  volumes:
+   - ../visualisation:/visualisation
+  stdin_open: true
+  tty: true
+  cap_add:
+   - ALL
+  working_dir: /visualisation
+  command:
+   "./start.sh"

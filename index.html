@@ -5,15 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SWENG Visualisation</title>
 </head>
 
 <body>
-    <form action="/visualise">
-        <label for="repoLink">Paste Repository Link</label>
-        <br>
-        <input type="text" id = "repoLink" name="URL">
-    </form>
+    <center>
+        <h><b>Visualization of Software Engineering Activity</b></h>
+        <p>In my research for the Measuring Software Engineering Report I heard of issues surrounding metrics like Lines Of Code, where
+        <br>counting some aspect of software doesn't indicate the quality of what is being counted, and is not an effective measure of productivity.
+        <br>This inspired me to experiment with methods to assess commit quality, and to bias evaluation in favour of higher quality commits, such 
+        <br>that their use in evaluating productivity is more effective. In many cases, the vast majority of contributions come from a small few developers,
+        <br>and the rest of the names in the chart legend hardly have a visible impact in the chart.
+        </p>
+        <p>For this project, I focused on 3 aspects of commits, and assigned a score to each developer in a GitHub repository based on their commit history.
+        <br>The contribution of each developer relative to each other is visualised using Chart.js
+        </p>
+        <form action="/visualise">
+            <label for="repoLink">Paste a GitHub repository link below, e.g. https://github.com/aodhanocathain/github-slideshow, then press your enter key.</label>
+            <br>
+            <input type="text" id="repoLink" name="URL">
+        </form>
+    </center>
 </body>
 
 </html>
