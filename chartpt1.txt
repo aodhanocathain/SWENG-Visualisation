@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>hello</p>
+    <div class="container" style="position:absolute; top:60px; left:10px; width:1000px; height:500px;" >
+        <canvas id="myChart">
+
+        </canvas>
+    </div>
+    <script>
+    let myChart;
+    async function makeChart() {
