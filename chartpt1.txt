@@ -6,15 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SWENG Visualization</title>
 </head>
 
 <body>
-    <div class="container" style="position:absolute; top:60px; left:10px; width:1000px; height:500px;" >
+<center>
+    <h><b>Visualization of Software Engineering Activity</b></h>
+    <br>
+    <p1>The below graph visualizes the value of each contributor to the repository.
+    <br>
+    Scores are calculated by taking the commit counts of each contributor, and weighting them according to their scale and their regularity.
+    <br>
+    Commit irregularity is penalised, and commits featuring many additions and/or deletions are ranked favourably.
+    <br>
+    This trio consisting of commit count, commit frequency and commit impact provides an estimation of software engineering productivity, which is used to assign
+    <br>value to individual software engineers, and visualise it for this project.
+    <br><br>
+    I was inspired to combine 3 metrics by <a href="https://www.researchgate.net/publication/323719116_Software_metrics_for_fault_prediction_using_machine_learning_approaches_A_literature_review_with_PROMISE_repository_dataset">this paper</a>
+     which asserts in admittedly broken English that "three  combination  of  software  metrics  are  sufficient".
+    </p>
+    <br>
+    <div class="container" style="position:absolute; top:200px; left:460px; width:1000px; margin:0 auto; height:500px;" >
         <canvas id="myChart">
 
         </canvas>
     </div>
+    </center>
     <script>
     let myChart;
     async function makeChart() {

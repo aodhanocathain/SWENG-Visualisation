@@ -10,7 +10,7 @@
       labels: names,
       datasets: [
         {
-          label: "My First dataset",
+          label: "Weighted Software Engineering Activity",
           backgroundColor: colours,
           borderColor: "rgb(255, 99, 132)",
           data: values,
