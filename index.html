@@ -10,72 +10,18 @@
 </head>
 
 <body>
+
+    <form action="/visualise">
+        <label for="repoLink">Repository Link</label>
+        <br>
+        <input type="text" id = "repoLink" name="URL">
+    </form>
     <div class="container" style="position:absolute; top:60px; left:10px; width:1000px; height:500px;" >
         <canvas id="myChart">
 
         </canvas>
     </div>
-    <script>
-        let myChart;
-
-        const STARS = 0
-        const NAMES = 1
-
-        async function dataGet(type) {
-            const url = "https://api.github.com/search/repositories?q=stars:>100000"
-            const response = await fetch(url)
-            const result = await response.json()
-            const items = result['items']
-            const returns = []
-
-            items.forEach(function (item, index, arr) {
-                switch (type) {
-                    case NAMES:
-                        returns.push(item['name'].replace('"', ''))
-                        break;
-                    case STARS:
-                        returns.push(item['stargazers_count'])
-                        break;
-                }
-            })
-            return returns
-        };
-
-        async function makeChart() {
-            const values = await dataGet(STARS)
-            const names = await dataGet(NAMES)
-            const colours = []
-            names.forEach(function(item, index, arr){
-                let r = Math.random()*255
-                let g = Math.random()*255
-                let b = Math.random()*255
-                colours.push(`rgb(${r}, ${g}, ${b})`)
-            })
-
-            const data = {
-                labels: names,
-                datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: colours,
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: values
-                }]
-            };
-
-            const config = {
-                type: 'pie',
-                data: data,
-                options: {}
-            };
-
-            myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-        }
-
-        makeChart()
-    </script>
+    <!-- <script src="./visualise.js"></script> -->
 </body>
 
 </html>
