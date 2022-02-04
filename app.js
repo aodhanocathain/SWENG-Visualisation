@@ -17,17 +17,6 @@ app.get("/", (_req, res) => {
   });
 });
 
-function commitScore(commit) {
-  /*
-  let score = 0;
-  commit["files"].forEach(function (item, index, arr) {
-    score = score + item["patch"].length;
-  });
-  */
-  console.log(commit);
-  return 1;
-}
-
 app.get("/visualise", async (_req, res) => {
   const segments = _req.url.split("%2F"); //taken from the user's pasted link
   let url = `https://api.github.com/repos/${segments[3]}/${segments[4]}/stats/contributors`;
