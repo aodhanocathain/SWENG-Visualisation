@@ -1,0 +1,38 @@
+    const colours = [];
+    names.forEach(function (item, index, arr) {
+      let r = Math.random() * 255;
+      let g = Math.random() * 255;
+      let b = Math.random() * 255;
+      colours.push(`rgb(${r}, ${g}, ${b})`);
+    });
+  
+    const data = {
+      labels: names,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: colours,
+          borderColor: "rgb(255, 99, 132)",
+          data: values,
+        },
+      ],
+    };
+  
+    const config = {
+      type: "pie",
+      data: data,
+      options: {},
+    };
+  
+    myChart = new Chart(document.getElementById("myChart"), config);
+  }
+  
+
+
+        makeChart()
+    </script>
+    <br>
+    <p> hello gaain</p>
+</body>
+
+</html>
