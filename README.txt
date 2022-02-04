@@ -1,4 +1,5 @@
 Execution Instructions (Assuming Docker is installed)
+-Download this repo from GitHub
 -Open terminal
 -Navigate to "visualisation" folder (where this README is stored)
 -Run "docker-compose up --build"
